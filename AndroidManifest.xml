@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.JTNNG"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="8" />
+		
+	<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> 
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+	
+	<uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
+	<uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+	<uses-permission android:name="android.permission.WRITE_SETTINGS"/> 
+	<uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"/> 
+
+    <application android:icon="@drawable/ic_launcher" android:label="@string/app_name1" android:debuggable="true">
+        <activity android:name=".LoginDialogActivity"
+                  android:label="@string/app_name1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" android:label="@string/app_name1" />
+        <activity android:name=".OffersActivity" android:label="@string/offers" />
+        <activity android:name=".AccountsActivity" android:label="@string/accounts" />
+        <activity android:name=".OrdersActivity" android:label="@string/orders" />
+        <activity android:name=".CreateOrderActivity" android:label="@string/createorder" />
+        <activity android:name=".TradesActivity" android:label="@string/trades" />
+        <activity android:name=".ClosedTradesActivity" android:label="@string/closed_trades" />
+        <activity android:name=".SummaryActivity" android:label="@string/summary" />
+        
+       <service android:name=".ArbitrageService"
+      android:stopWithTask="true"/>
+       <service android:name=".LoginService"
+           android:stopWithTask="true"/>
+       <service android:name=".NeuralService"
+      android:stopWithTask="true"/>
+		<service android:name=".TablesUpdateService"
+	 android:stopWithTask="true"/>
+		
+		<receiver
+			android:name=".JTFXBootC"
+			android:enabled="true">
+			<intent-filter>
+				<action android:name="android.intent.action.SIM_STATE_CHANGED" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+			</intent-filter>
+		</receiver>
+
+    </application>
+</manifest>
