@@ -4,7 +4,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:scrollbars="vertical"
-	android:background="#245956">
+	android:background="#FEFEFE">
 
 	<HorizontalScrollView
 		android:fillViewport="true"
@@ -23,49 +23,63 @@
 
 				<TextView
 					android:text="Symbol"
-					android:id="@+id/tvSymbol"/>
+					android:id="@+id/tvSymbol"
+					android:textColor="#000000"
+					android:textAlignment="viewEnd"/>
 
 				<TextView
 					android:text="Bid"
 					android:id="@+id/tvBid"
 					android:paddingLeft="5sp"
-					android:paddingRight="5sp"/>
+					android:paddingRight="5sp"
+					android:textColor="#000000"
+					android:textAlignment="viewEnd"/>
 
 				<TextView
 					android:text="Ask"
 					android:id="@+id/tvAsk"
 					android:paddingLeft="5sp"
-					android:paddingRight="5sp"/>
+					android:paddingRight="5sp"
+					android:textColor="#000000"
+					android:textAlignment="viewEnd"/>
 
 				<TextView
 					android:text="Spread"
 					android:id="@+id/tvSpread"
 					android:paddingLeft="5sp"
-					android:paddingRight="5sp"/>
+					android:paddingRight="5sp"
+					android:textColor="#000000"
+					android:textAlignment="viewEnd"/>
 
 				<TextView
 					android:text="Pip Cost"
 					android:id="@+id/tvPipCost"
 					android:paddingLeft="5sp"
-					android:paddingRight="5sp"/>
+					android:paddingRight="5sp"
+					android:textColor="#000000"
+					android:textAlignment="viewEnd"/>
 
 				<TextView
 					android:text="High"
 					android:id="@+id/tvHigh"
 					android:paddingLeft="5sp"
-					android:paddingRight="5sp"/>
+					android:paddingRight="5sp"
+					android:textColor="#000000"
+					android:textAlignment="viewEnd"/>
 
 				<TextView
 					android:text="Low"
 					android:id="@+id/tvLow"
 					android:paddingLeft="5sp"
-					android:paddingRight="5sp"/>
+					android:paddingRight="5sp"
+					android:textColor="#000000"
+					android:textAlignment="viewEnd"/>
 
 			</TableRow>
 
 			<View
 				android:layout_height="1dp"
-				android:background="#999"/>
+				android:background="#FFFFFF"/>
 
 		</TableLayout>
 

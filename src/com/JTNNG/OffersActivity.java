@@ -134,6 +134,7 @@ public class OffersActivity extends Activity implements OnClickListener
         tvSymbol.setPadding(0, STANDARD_MARGIN, 0, STANDARD_MARGIN);
         tvSymbol.setText(row.getInstrument());
         tvSymbol.setLayoutParams(new TableRow.LayoutParams());
+		tvSymbol.setTextColor(Color.BLACK);
 
         tableRow.addView(tvSymbol);
 
@@ -147,6 +148,7 @@ public class OffersActivity extends Activity implements OnClickListener
         tvBid.setGravity(Gravity.RIGHT);
         tvBid.setLayoutParams(new TableRow.LayoutParams());
         tvBid.setTag(dBid);
+		tvBid.setTextColor(Color.BLACK);
         tableRow.addView(tvBid);
 
         double dAsk = row.getAsk();
@@ -156,6 +158,7 @@ public class OffersActivity extends Activity implements OnClickListener
         tvAsk.setGravity(Gravity.RIGHT);
         tvAsk.setLayoutParams(new TableRow.LayoutParams());
         tvAsk.setTag(dAsk);
+		tvAsk.setTextColor(Color.BLACK);
         tableRow.addView(tvAsk);
 		mActualPrices.put(row.getOfferID(), new Pair<BigDecimal, BigDecimal>(new BigDecimal(dBid), new BigDecimal(dAsk)));
 
@@ -167,6 +170,7 @@ public class OffersActivity extends Activity implements OnClickListener
         tvSpread.setGravity(Gravity.RIGHT);
         tvSpread.setLayoutParams(new TableRow.LayoutParams());
         tvSpread.setTag(dSpread);
+		tvSpread.setTextColor(Color.BLACK);
         tableRow.addView(tvSpread);
 
         TextView tvPipCost = new TextView(this);
@@ -174,6 +178,7 @@ public class OffersActivity extends Activity implements OnClickListener
         tvPipCost.setPadding(STANDARD_MARGIN, 0, STANDARD_MARGIN, 0);
         tvPipCost.setGravity(Gravity.RIGHT);
         tvPipCost.setLayoutParams(new TableRow.LayoutParams());
+		tvPipCost.setTextColor(Color.BLACK);
         tableRow.addView(tvPipCost);
 
         TextView tvHigh = new TextView(this);
@@ -287,7 +292,7 @@ public class OffersActivity extends Activity implements OnClickListener
         private void setColor(double dOldValue, double dNewValue, TextView view) {
             int iResult = Double.compare(dNewValue, dOldValue);
             if (iResult == 0) {
-                view.setTextColor(view.getTextColors().getDefaultColor());
+                view.setTextColor(Color.BLACK);
             } else if (iResult > 0) {
                 view.setTextColor(COLOR_UP);
             } else {

@@ -203,7 +203,7 @@ public class CreateOrderActivity extends Activity implements OnCheckedChangeList
         if (requestFactory != null) {
             O2GRequest request = mSession.getRequestFactory().createOrderRequest(valueMap);
             if (request == null) {
-                Toast.makeText(CreateOrderActivity.this, requestFactory.getLastError(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(CreateOrderActivity.this, "JTFX: " + requestFactory.getLastError(), Toast.LENGTH_SHORT).show();
             } else {
                 mSession.sendRequest(request);
 				File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "/jtfx1.txt");

@@ -36,12 +36,9 @@
         <activity android:name=".ClosedTradesActivity" android:label="@string/closed_trades" />
         <activity android:name=".SummaryActivity" android:label="@string/summary" />
         
-       <service android:name=".ArbitrageService"
-      android:stopWithTask="true"/>
-       <service android:name=".LoginService"
+       
+       	<service android:name=".LoginService"
            android:stopWithTask="true"/>
-       <service android:name=".NeuralService"
-      android:stopWithTask="true"/>
 		<service android:name=".TablesUpdateService"
 	 android:stopWithTask="true"/>
 		

@@ -84,8 +84,8 @@ public class LoginService extends Service
 				// TODO: Implement this method
 				Toast.makeText(getApplicationContext(), "JTFX: "+ Status.toString(), Toast.LENGTH_SHORT).show();
 				if(Status == O2GSessionStatusCode.CONNECTED){
-					startService(new Intent(getApplicationContext(), ArbitrageService.class));
-					startService(new Intent(getApplicationContext(), NeuralService.class));
+					//startService(new Intent(getApplicationContext(), ArbitrageService.class));
+					//startService(new Intent(getApplicationContext(), NeuralService.class));
 					startService(new Intent(getApplicationContext(), TablesUpdateService.class));
 					stopSelf();
 				}else if(Status == O2GSessionStatusCode.RECONNECTING || Status == O2GSessionStatusCode.CONNECTING){

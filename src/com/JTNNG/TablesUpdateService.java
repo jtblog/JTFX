@@ -5,6 +5,7 @@ import android.content.*;
 import android.os.*;
 import com.fxcore2.*;
 import android.widget.*;
+import java.util.*;
 
 public class TablesUpdateService extends Service
 {
@@ -15,6 +16,8 @@ public class TablesUpdateService extends Service
 	public static String BROADCAST_ACTION = "com.JTNNG.TablesUpdate";
 	public Bundle BDOffers;
 	public Intent intent;
+	public List<currencypair> cp;
+	public List<String> checker;
 	
 
 	@Override
@@ -30,6 +33,10 @@ public class TablesUpdateService extends Service
 		// TODO: Implement this method
 		super.onStart(intent, startId);
 		mSession = SharedObjects.getInstance().getSession();
+		
+		cp = new ArrayList<currencypair>();
+		checker = new ArrayList<String>();
+		
 		if(mSession.getSessionStatus() == O2GSessionStatusCode.CONNECTED){
 			mOffersTable = (O2GOffersTable) mSession.getTableManager().getTable(
 				O2GTableType.OFFERS);
@@ -79,6 +86,33 @@ public class TablesUpdateService extends Service
 		public void run()
 		{
 			// TODO: Implement this method
+			if(!(checker.contains(OfferRow.getOfferID()))){
+				cp.add(new currencypair(OfferRow));
+				checker.add(OfferRow.getOfferID());
+			}else{
+				for(int i=0; i<cp.size(); i++){
+					if(cp.get(i).getSymbol().equalsIgnoreCase(OfferRow.getInstrument())){
+						cp.get(i).getInstance().setContext(getApplicationContext());
+						if(cp.get(i).getInstance().update(OfferRow) == true){
+							double[] data1 = cp.get(i).getInstance().getVolumes();
+							String s = " | ";
+							for(double d : data1){
+								s += String.valueOf(d) + " | ";
+							}
+							
+							Toast.makeText(getApplicationContext(),String.valueOf(OfferRow.getTime().get(GregorianCalendar.SECOND)) + " | " + cp.get(i).getInstance().getSymbol() + s, Toast.LENGTH_SHORT).show();
+							
+							//Toast.makeText(getApplicationContext(),String.valueOf(data1[data1.length-1]) + " = Buy: " + String.valueOf(cp.get(i).getInstance().RSI_Buy()) +" | Sell: "+ String.valueOf(cp.get(i).getInstance().RSI_Sell()), Toast.LENGTH_SHORT).show();
+							
+							mHandler.post(new Arbitrage(cp));
+						}
+						
+					}else{
+						//Toast.makeText(getApplicationContext(),cp.get(i).getInstance().getErrorMessage(), Toast.LENGTH_SHORT).show();
+					}
+				}
+			}
+			
 			BDOffers = new Bundle();
 			intent = new Intent(BROADCAST_ACTION);
 			
